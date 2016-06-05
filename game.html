@@ -13,10 +13,17 @@ document.onkeydown = KeyDownMoveIt;
 
 function KeyDownMoveIt(e)
 {
+  if(e.keyCode == 37)
+    xDude = xDude - 10;
+
   if(e.keyCode == 39)
     xDude = xDude + 10;
+
   if(e.keyCode == 40)
     yDude = yDude + 10;
+
+  if(e.keyCode == 38)
+    yDude = yDude - 10;
 
     dudeObj.left = xDude;
     dudeObj.top = yDude;
