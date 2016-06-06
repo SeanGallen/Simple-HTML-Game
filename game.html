@@ -1,12 +1,12 @@
 <html>
 <body bgcolor="#808080">
   <img src="board.png" id='board' style='position:absolute; top:0; left:0; width:500; height:500; z-index:1'>
-  <img src="buddy.png" id='dude' style='position:absolute; top:0; left:0; z-index:3;'>
+  <img src="buddy.png" id='person' style='position:absolute; top:0; left:0; z-index:3;'>
 <script>
 
-var dudeObj = document.getElementById('dude').style;
-var xDude = 0;
-var yDude = 0;
+var personObj = document.getElementById('person').style;
+var xPerson = 0;
+var yPerson = 0;
 
 
 document.onkeydown = KeyDownMoveIt;
@@ -14,10 +14,10 @@ document.onkeydown = KeyDownMoveIt;
 function KeyDownMoveIt(e)
 {
   if(e.keyCode == 37)
-    xDude = xDude - 10;
+    xPerson = xPerson - 10;
 
   if(e.keyCode == 39)
-    xDude = xDude + 10;
+    xPerson = xPerson + 10;
 
   if(e.keyCode == 40)
     yDude = yDude + 10;
