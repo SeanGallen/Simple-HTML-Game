@@ -1,29 +1,82 @@
 <html>
-<body bgcolor="#808080">
-  <img src="board.png" id='board' style='position:absolute; top:0; left:0; width:500; height:500; z-index:1'>
-  <img src="buddy.png" id='person' style='position:absolute; top:0; left:0; z-index:3;'>
+  <head>
+    <title> First Game: There can be only one. </title>
+<style>
+  body {
+    background: #808080;
+  }
+
+  #board {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    height: 500;
+    width: 500;
+  }
+
+  #person {
+    position: fixed;
+    top: 112;
+    left: 390;
+    z-index: 3;
+  }
+
+  #badPerson {
+    position: fixed;
+    top: 562;
+    left: 840;
+    z-index: 3;
+  }
+
+</style>
+  </head>
+<body>
+  <img src="board.png" id='board'>
+  <img src="buddy.png" id='person'>
+  <img src="buddy.png" id='badPerson'>
 <script>
+
+var badPersonObj = document.getElementById('badPerson').style;
 
 var personObj = document.getElementById('person').style;
 var xPerson = 0;
 var yPerson = 0;
 
-
 document.onkeydown = KeyDownMoveIt;
+//console.log(document.onkeydown);
 
 function KeyDownMoveIt(e)
 {
+  console.log(e);
   if(e.keyCode == 37)
     xPerson = xPerson - 10;
+   console.log(xPerson, " ", yPerson);
 
   if(e.keyCode == 39)
     xPerson = xPerson + 10;
+   console.log(window.screenY);
 
   if(e.keyCode == 40)
     yPerson = yPerson + 10;
+   console.log(window.screenY);
 
   if(e.keyCode == 38)
     yPerson = yPerson - 10;
+   console.log(window.screenY);
+
+  if (xPerson > 890 - 50)
+   xPerson = 890 - 50;
+
+  if (yPerson > 610 - 50)
+   yPerson = 610 - 50;
+
+  if (xPerson < 390)
+   xPerson = 390;
+
+  if (yPerson < 112)
+   yPerson = 112;
 
     personObj.left = xPerson;
     personObj.top = yPerson;
