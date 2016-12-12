@@ -36,35 +36,37 @@
   <img src="board.png" id='board'>
   <img src="buddy.png" id='person'>
   <img src="buddy.png" id='badPerson'>
+<audio id="sound" src="bam.m4a"></audio>
 <script>
 
 var badPersonObj = document.getElementById('badPerson').style;
+badPersonObj.top = 560;
+badPersonObj.left = 840;
 
 var personObj = document.getElementById('person').style;
 var xPerson = 0;
 var yPerson = 0;
 
+
 document.onkeydown = KeyDownMoveIt;
-//console.log(document.onkeydown);
+const audio = document.querySelector('#sound');
+
 
 function KeyDownMoveIt(e)
 {
-  console.log(e);
+  console.log(badPersonObj.left);
+  console.log('person', personObj.left);
   if(e.keyCode == 37)
     xPerson = xPerson - 10;
-   console.log(xPerson, " ", yPerson);
 
   if(e.keyCode == 39)
     xPerson = xPerson + 10;
-   console.log(window.screenY);
 
   if(e.keyCode == 40)
     yPerson = yPerson + 10;
-   console.log(window.screenY);
 
   if(e.keyCode == 38)
     yPerson = yPerson - 10;
-   console.log(window.screenY);
 
   if (xPerson > 890 - 50)
    xPerson = 890 - 50;
@@ -80,8 +82,11 @@ function KeyDownMoveIt(e)
 
     personObj.left = xPerson;
     personObj.top = yPerson;
-}
 
+    if (badPersonObj.top === personObj.top && badPersonObj.left === personObj.left) {
+    audio.play();
+  }
+}
 </script>
 </body>
 </html>
